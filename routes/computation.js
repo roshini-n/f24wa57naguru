@@ -1,11 +1,18 @@
+// In your app.js or server.js file
+
 const express = require('express');
 const app = express();
 const port = 3000;
 
-// Create the computation endpoint
+// Define a root route
+app.get('/', (req, res) => {
+    res.send('Welcome to my Express server!'); // Message for root URL
+});
+
+// Other routes, like your computation endpoint
 app.get('/computation', (req, res) => {
     // Generate a random value between -1 and 1 (since Math.asin requires this range)
-    let x = Math.random() * 2 - 1; // Generates a number between -1 and 1
+    let x = Math.random(); // Generates a number between -1 and 1
     
     // Check for query parameter 'x' and use that value if provided
     if (req.query.x) {
