@@ -1,16 +1,13 @@
 // In your app.js or server.js file
 
 const express = require('express');
-const app = express();
+const router = express.Router();
+//const app = express();
 const port = 3000;
 
 // Define a root route
-app.get('/', (req, res) => {
-    res.send('Welcome to my Express server!'); // Message for root URL
-});
+router.get('/', (req, res) => {
 
-// Other routes, like your computation endpoint
-app.get('/computation', (req, res) => {
     // Generate a random value between -1 and 1 (since Math.asin requires this range)
     let x = Math.random(); // Generates a number between -1 and 1
     
@@ -35,7 +32,5 @@ app.get('/computation', (req, res) => {
     res.send(response);
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+// Export the router
+module.exports = router;
